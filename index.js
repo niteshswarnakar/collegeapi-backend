@@ -18,7 +18,7 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-  const routes = ["GET /", "GET /users", "GET /user:id"];
+  const routes = ["GET /", "GET /api/students", "GET /user:id"];
   res.status(200).json({ routes: routes });
 });
 
