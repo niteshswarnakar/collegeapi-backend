@@ -9,3 +9,12 @@ POST http://localhost:5000/api/students
     "batch":075,
     "group":C
 }
+
+###
+POST http://localhost:5000/api/add-confession 
+
+{
+    to:"senior",
+    from:"junior",
+    message:"how are you senior"
+}
