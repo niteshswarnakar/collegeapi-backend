@@ -1,5 +1,5 @@
 import express from "express";
-import { addConfession } from "../controller/api.js";
+import { saveRequest } from "../controller/api.js";
 const router = express.Router();
 import ConfessionModel from "../models/confession.js";
 // * create data in mongodb database
@@ -7,6 +7,8 @@ import ConfessionModel from "../models/confession.js";
 // app.get("/requestlist", getRequestedFormData);
 
 // app.post("/add-confession", addConfession);
+
+router.post("/students", saveRequest);
 
 router.get("/get-confession", async (req, res) => {
   try {
