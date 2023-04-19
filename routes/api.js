@@ -2,6 +2,7 @@ import express from "express";
 import { saveRequest } from "../controller/api.js";
 const router = express.Router();
 import ConfessionModel from "../models/confession.js";
+import mongoose from "mongoose";
 // * create data in mongodb database
 //* read data from mongodb database
 // app.get("/requestlist", getRequestedFormData);
@@ -38,9 +39,31 @@ router.post("/add-confession", async (req, res) => {
   // res.send({ message: "you reached here" });
 });
 
-router.post("/demo-route", (req, res) => {
-  console.log("req - ", req.body);
-  res.send("you reached here");
+router.post("/add-comment/:id", async (req, res) => {
+  const { id: _id } = req.params;
+  console.log({ _id });
+  const { comment } = req.body;
+  console.log({ comment });
+  const confession = await ConfessionModel.findById(_id);
+  console.log({ confession });
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send("No confession with that id");
+
+  // this is old method of updating
+  // const updatedConfession = await ConfessionModel.findByIdAndUpdate(_id, {
+  //   ...confession,
+  //   comments: [...confession.comments, comment],
+  // });
+
+  // this is new method of updating
+  try {
+    confession?.comments.push(comment);
+    console.log({ confession });
+    await confession.save();
+    res.json(confession);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.delete("/delete-confessions", async (req, res) => {

@@ -17,6 +17,7 @@ const confessionSchema = new mongoose.Schema({
     type: Date,
     default: () => Date.now(),
   },
+  comments: [String],
 });
 
 const ConfessionModel = mongoose.model("ConfessionModel", confessionSchema);
