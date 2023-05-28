@@ -1,13 +1,9 @@
 import express from "express";
 import { saveRequest } from "../controller/api.js";
-const router = express.Router();
 import ConfessionModel from "../models/confession.js";
 import mongoose from "mongoose";
-// * create data in mongodb database
-//* read data from mongodb database
-// app.get("/requestlist", getRequestedFormData);
 
-// app.post("/add-confession", addConfession);
+const router = express.Router();
 
 router.post("/students", saveRequest);
 
@@ -18,7 +14,8 @@ router.get("/get-confession", async (req, res) => {
   } catch (err) {
     res.send(err);
   }
-});
+})
+
 
 router.post("/add-confession", async (req, res) => {
   console.log("req.body - ", req.body);
@@ -56,7 +53,7 @@ router.post("/add-comment/:id", async (req, res) => {
   // });
 
   // this is new method of updating
-  try {
+  try { 
     confession?.comments.push(comment);
     console.log({ confession });
     await confession.save();
@@ -71,4 +68,4 @@ router.delete("/delete-confessions", async (req, res) => {
   res.send("all deleted");
 });
 
-export default router;
+export default router
