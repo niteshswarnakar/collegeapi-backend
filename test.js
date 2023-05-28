@@ -1,15 +1,8 @@
-const fib = (n) => {
-  let a = 0;
-  let b = 1;
-  let c = 1;
-  let i;
-  for (i = 2; i < n; i++) {
-    c = a + b;
-    a = b;
-    b = c;
-  }
 
-  return c;
-};
+const imageData = req.body.imageData; // assume this contains the base64-encoded image data
+const filePath = 'images/myimage.png'; // path to the file you want to create
 
-console.log(fib(8));
+fs.writeFile(filePath, imageData, 'base64', (err) => {
+  if (err) throw err;
+  console.log('Image saved successfully!');
+});

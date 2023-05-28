@@ -4,8 +4,8 @@ import apiRoutes from "./routes/api.js";
 import bookRoutes from "./routes/book.js"
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import bodyParser from "body-parser";
 import cors from "cors";
+import bookRoutes from "./routes/book.js"
 
 const app = express();
 
@@ -47,7 +47,11 @@ app.post("/", (req, res) => {
 });
 
 app.use("/api", apiRoutes);
+<<<<<<< HEAD
 
 app.use("/book", bookRoutes);
 
+=======
+app.use("/api",bookRoutes)
+>>>>>>> Hotfix: Made router export
 app.use("/users", userRoutes);

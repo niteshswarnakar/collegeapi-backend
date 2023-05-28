@@ -53,7 +53,10 @@ router.post("/add-comment/:id", async (req, res) => {
   // });
 
   // this is new method of updating
+<<<<<<< HEAD
   
+=======
+>>>>>>> Hotfix: Made router export
   try { 
     confession?.comments.push(comment);
     console.log({ confession });

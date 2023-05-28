@@ -7,7 +7,7 @@ const requestSchema = new mongoose.Schema({
   },
   batch: {
     type: String,
-    required: true,
+    required: true,kz
   },
   group: {
     type: String,
