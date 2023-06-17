@@ -1,6 +1,7 @@
 import express from "express";
 import userRoutes from "./routes/users.js";
 import apiRoutes from "./routes/api.js";
+import bookRoutes from "./routes/book.js"
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
@@ -46,5 +47,7 @@ app.post("/", (req, res) => {
 });
 
 app.use("/api", apiRoutes);
+
+app.use("/book", bookRoutes);
 
 app.use("/users", userRoutes);
