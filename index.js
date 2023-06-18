@@ -47,11 +47,10 @@ app.post("/", (req, res) => {
 });
 
 app.use("/api", apiRoutes);
-<<<<<<< HEAD
+
 
 app.use("/book", bookRoutes);
 
-=======
 app.use("/api",bookRoutes)
->>>>>>> Hotfix: Made router export
+app.use("/api",bookRoutes)
 app.use("/users", userRoutes);

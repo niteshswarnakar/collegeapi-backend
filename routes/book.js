@@ -9,21 +9,21 @@ const router = express.Router()
 
 router.post("/add-book",fileUpload(), async (req,res) =>{
     const data = req.files
-    console.log(data.file)
+    console.log({data})
+
+
+    let image = req.files;
+    let uploadPath = path.join(process.cwd()+'/somewhere/server/');
 
   // Use the mv() method to place the file somewhere on your server
-  // console.log(typeof({image}))
+  console.log(typeof(image))
 
-  // fs.writeFile(uploadPath, image, 'base64', (err) => {
-  //   if (err) throw err;
-  //   console.log('Image saved successfully!');
-  // });
-    console.log("add book route reached")
-    res.json(data)
+//   fs.writeFile(uploadPath, image, 'base64', (err) => {
+//     if (err) throw err;
+//     console.log('Image saved successfully!');
+//   });
+
+    res.send("add-book route reached")
 })
 
-router.get("/add-book", async(req, res) =>{
-  res.json("add book get route reached")
-})
- 
 export default router
