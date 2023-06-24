@@ -2,6 +2,7 @@ import express from "express"
 import fileUpload from "express-fileupload"
 import path from "path"
 import fs from "fs"
+import BookModel from "../models/bookpost.js"
 
 const router = express.Router()
 
@@ -13,17 +14,26 @@ router.post("/add-book",fileUpload(), async (req,res) =>{
 
 
     let image = req.files;
-    let uploadPath = path.join(process.cwd()+'/somewhere/server/');
 
   // Use the mv() method to place the file somewhere on your server
-  console.log(typeof(image))
+  console.log(" type of image - ", typeof(image))
 
-//   fs.writeFile(uploadPath, image, 'base64', (err) => {
-//     if (err) throw err;
-//     console.log('Image saved successfully!');
-//   });
+  const newBookPost = new BookModel({
+    name: data?.name, 
+    fileData: data,
+  });
 
-    res.send("add-book route reached")
+  try{
+    await newBookPost.save(); 
+
+    res.status(201).json(newBookPost)
+  }catch(err){
+    console.log(err)
+  }
+
+  
+
+    res.send("Unable to save the BOOK POST")
 })
 
 export default router
