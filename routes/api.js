@@ -9,7 +9,8 @@ router.post("/students", saveRequest);
 
 router.get("/get-confession", async (req, res) => {
   try {
-    const confessionList = await ConfessionModel.find();
+    // const confessionList = await ConfessionModel.find();
+    let confessionList = [] 
     res.status(200).json(confessionList);
   } catch (err) {
     res.send(err);
