@@ -18,6 +18,21 @@ router.get("/get-confession", async (req, res) => {
 })
 
 
+router.post("/admin", async (req, res) => {
+  const {secret_key} = req.body
+  console.log({secret_key})
+  try {
+    if (secret_key !== "random45#"){
+      res.status(400).send("Invalid secret")
+    }
+    const confessionList = await ConfessionModel.find();
+    res.status(200).json(confessionList);
+  } catch (err) {
+    res.send(err);
+  }
+})
+
+
 router.post("/add-confession", async (req, res) => {
   console.log("req.body - ", req.body);
   const newConfession = new ConfessionModel({
